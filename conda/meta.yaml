@@ -1,0 +1,30 @@
+{% set name = "pypdb" %}
+{% set version = "0.0.1" %}
+
+package:
+  name: "{{ name|lower }}"
+  version: "{{ version }}"
+
+source:
+  path: ../
+
+build:
+  number: 0
+  script: "{{ PYTHON }} -m pip install . -vv"
+
+requirements:
+  host:
+    - python
+    - requests
+  run:
+    - python
+    - requests
+
+test:
+  imports:
+    - pypdb
+  requires:
+    - pytest
+
+about:
+  summary: "Download PDB files"
